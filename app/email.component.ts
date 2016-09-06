@@ -1,24 +1,17 @@
 import { Component } from '@angular/core';
 
-import { EmailComponent } from './email.component';
 
 @Component({
-    selector: 'my-app',
-    providers: [EmailComponent],
-    // template: `
-    //     <h1>Bubblee</h1>
-    //     <bemail />
-    // `
-
+    selector: 'bemail',
     template: ` 
     <h1>{{title}}</h1>
     <h2>From: <input value="{{from}}"></h2>
     <h2>To:   <input value="{{to}}"  ></h2>
-    <h2>Title:<input value="{{title}}"></h2>
-    <textarea name="text">{{content}}</textarea>
+    <h2>Title:<input value="{{title}]"></h2>
+    <input value="{{content}}">
     `
 })
-export class AppComponent {
+export class EmailComponent {
     to:      string = "mamie";
     from:    string = "Ariel";
     title:   string = "first email";
@@ -27,5 +20,3 @@ export class AppComponent {
     then line 3 followed by a last CR
     `;
 }
-
-
