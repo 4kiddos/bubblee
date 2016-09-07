@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import {Message} from './message';
+import { Contact } from './contact';
 
 @Component({
     selector: 'edit-message',
@@ -96,8 +97,16 @@ export class EditMessageComponent {
     @Output() editMessagePost:EventEmitter<Message> = new EventEmitter<Message>();
     message :Message= new Message(); 
     ngOnInit(){
-        this.message.from = this.from;
-        this.message.to   = this.to;
+        let ar1:Contact[] = JSON.parse(this.from);
+        let ar2:Contact[] = JSON.parse(this.to);
+        console.log('ar1',ar1)
+        console.log('ar2',ar2)
+        this.message.from = ar1.map(v=>v.username).join(',');
+        this.message.to = ar2.map(v=>v.username).join(',');
+    }
+    ngOnChanges(changes: {[propkey: string]: SimpleChange}){
+        // if (map.from || map.to)
+            this.ngOnInit();
     }
     onSubmit(){
         this.editMessagePost.emit(this.message);
