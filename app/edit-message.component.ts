@@ -8,35 +8,44 @@ import {Message} from './message';
             <button type="submit" [disabled]="!messageForm.form.valid">Submit</button>
             <div class="message-header-line">
                 <label for="from">From</label>
-                <input type="text" class="form-control" id="from"
-                    required
-                    [(ngModel)]="message.from" name="from"
-                    #from="ngModel" >
-                <div [hidden]="from.valid || from.pristine" 
-                    class="alert alert-danger">
-                From is required
+                <input  type="text" 
+                        class="form-control" 
+                        required
+                        id="from" 
+                        name="from" 
+                        [(ngModel)]="message.from" 
+                        #from="ngModel" >
+                <div    [hidden]="from.valid || from.pristine" 
+                        class="alert alert-danger">
+                    From is required
                 </div>
             </div>
             <div class="message-header-line">
                 <label for="to">To</label>
-                <input type="text" class="form-control" id="to"
-                    required
-                    [(ngModel)]="message.to" name="to"
-                    #to="ngModel" >
-                <div [hidden]="to.valid || to.pristine" 
-                    class="alert alert-danger">
-                To is required
+                <input  type="text" 
+                        class="form-control" 
+                        required 
+                        id="to" 
+                        [(ngModel)]="message.to" 
+                        name="to" 
+                        #to="ngModel" >
+                <div    [hidden]="to.valid || to.pristine" 
+                        class="alert alert-danger">
+                    To is required
                 </div>
             </div>
             <div class="message-header-line">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title"
-                    required
-                    [(ngModel)]="message.title" name="title"
-                    #title="ngModel" >
-                <div [hidden]="title.valid || title.pristine" 
-                    class="alert alert-danger">
-                Title is required
+                <label  for="title">Title</label>
+                <input  type="text" 
+                        class="form-control title" 
+                        required 
+                        id="title" 
+                        [(ngModel)]="message.title" 
+                        name="title" 
+                        #title="ngModel" >
+                <div    [hidden]="title.valid || title.pristine" 
+                        class="alert alert-danger">
+                    Title is required
                 </div>
             </div>
             <div class="message-header-line">
@@ -45,11 +54,6 @@ import {Message} from './message';
         <div class="cheat">{{stringify()}}</div>
         </form>
     `,
-
-                // <textarea class="form-control" id="content"
-                //     [(ngModel)]="message.content" name="content"
-                //     #content="ngModel" >
-
     styles: [`
         .message-header-line{
             display: flex;
@@ -75,10 +79,14 @@ import {Message} from './message';
             color: #888;
         }
         form {
-            margin: 2vw;
+            padding:            1vw;
+            margin:             2vw;
+            background-color:   #e5d0ff;
+            border:             1px solid #85687f;
+            border-radius:      0.5vw 0.5vw;                     
         }
         form div {
-            margin:     0.5vw;
+            margin:             0.5vw;
         }
     `] 
 })
