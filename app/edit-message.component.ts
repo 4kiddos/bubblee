@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {Message} from './message';
 
 @Component({
@@ -83,9 +83,17 @@ import {Message} from './message';
     `] 
 })
 export class EditMessageComponent {
-    // @Input()
-    message :Message = new Message();
+    @Input() from:string;
+    @Input() to  :string;
+    @Output() editMessagePost:EventEmitter<Message> = new EventEmitter<Message>();
+    message :Message= new Message(); 
+    ngOnInit(){
+        this.message.from = this.from;
+        this.message.to   = this.to;
+    }
+    onSubmit(){
+        this.editMessagePost.emit(this.message);
+    }
     submitted = false;
-    onSubmit() { this.submitted = true; }
     stringify():string {return JSON.stringify(this.message);}
 }

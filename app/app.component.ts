@@ -26,7 +26,7 @@ then line 3 followed by a last CR
     { to: "Ariel", from: "mamie", title: "first response", isReadOnly: true, content:
 `this is my response`
     },
-    { to: "Ariel", from: "mamie", title: "first response", isReadOnly: true, content:
+    { to: "Crystal", from: "papi", title: "first response", isReadOnly: true, content:
 `this is my response`
     },
 ]
@@ -44,7 +44,7 @@ var storedMessages: Message[] = MESSAGES;
     <h1>Messages</h1>
     <div >
         <div>Compose</div>
-        <edit-message ></edit-message>
+        <edit-message from="toto" to="pouet" (editMessagePost)="onAdd($event);"></edit-message>
     </div>
     <div *ngFor="let message of messages">
         <read-message [message]="message"></read-message>
@@ -52,12 +52,15 @@ var storedMessages: Message[] = MESSAGES;
     `
 })
 export class AppComponent {
+    myIdentity = 'Ariel';
     messages = storedMessages;
     newMessage: Message;
-
-    onAdd(msg: Message){
-        storedMessages.push(msg);
+    identitySelection = ['mamie'];
+    onAdd(msg:Message){
+        console.log(msg);
+        this.messages.unshift(msg);
     }
+
 }
 
 
