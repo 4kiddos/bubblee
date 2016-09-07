@@ -42,9 +42,9 @@ var storedMessages: Message[] = MESSAGES;
     providers: [ReadMessageComponent, EditMessageComponent],
     template: ` 
     <h1>Messages</h1>
-    <div >
-        <div>Compose</div>
-        <edit-message from="toto" to="pouet" (editMessagePost)="onAdd($event);"></edit-message>
+    <div>
+        <button (click)="newMessageVisible=!newMessageVisible;">Compose</button>
+        <edit-message [hidden]="!newMessageVisible" from="toto" to="pouet" (editMessagePost)="onAdd($event);"></edit-message>
     </div>
     <div *ngFor="let message of messages">
         <read-message [message]="message"></read-message>
@@ -52,6 +52,7 @@ var storedMessages: Message[] = MESSAGES;
     `
 })
 export class AppComponent {
+    newMessageVisible = false;
     myIdentity = 'Ariel';
     messages = storedMessages;
     newMessage: Message;
@@ -59,6 +60,7 @@ export class AppComponent {
     onAdd(msg:Message){
         console.log(msg);
         this.messages.unshift(msg);
+        this.newMessageVisible=false;
     }
 
 }
